@@ -1,6 +1,6 @@
 import os
 import requests
-from display.views import TranslationAPIView
+# from display.views import TranslationAPIView
 
 
 def get_translate(text, language, target_language):

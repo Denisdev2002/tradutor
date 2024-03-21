@@ -1,7 +1,27 @@
 from rest_framework import serializers
 
-class TranslationSerializer(serializers.ModelSerializer):
+from django.contrib.auth.models import Group, User 
+from display.models import Traducao
+from rest_framework import serializers
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        text = serializers.CharField(max_length=300)
-        language = serializers.CharField(max_length=5)
-        fields = ['text','language']
+        model = User
+        fields = ['url', 'username', 'email', 'groups']
+
+
+class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Group
+        fields = ['url', 'name']
+
+class TraducaoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Traducao
+        fields = ['text', 'language']
+
+        def create(self, validated_data):
+            return Traducao.objects.create(**validated_data)
+
+    
