@@ -19,9 +19,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class TraducaoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Traducao
-        fields = ['text', 'language']
+        fields = ['text', 'language','target_language']
 
-        def create(self, validated_data):
-            return Traducao.objects.create(**validated_data)
 
     
