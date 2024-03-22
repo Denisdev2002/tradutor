@@ -2,6 +2,7 @@
 ## Esse projeto é uma API que faz requisições no LibreTranslate, que eu subi localmente e consumi pela API que ele disponibiliza. Os dados dessas requisições são coletadas através de uma interface criada em Vue js.
 Foi uilizado o repositório gratuíto LibreTranslate https://github.com/ssut/py-googletrans, dentro da própria documentação já tem o passo a passo para clonar e buildar o repositório.
 ### Esse método faz a requisição para API do LibreTranslate.
+Coloquei essa função dentro '.django_project/services.py', onde esse arquivo fica responsável por fazer requisições para outras APIs. 
 
 
     def get_translate(text, source, target):
@@ -15,7 +16,16 @@ Foi uilizado o repositório gratuíto LibreTranslate https://github.com/ssut/py-
         return json.loads(response_str)["translatedText"]
 
 
-
 ## A API foi construída em Django Rest Framework (DRF)
+Caso você queira clona o repositório.
+
+    git clone git@github.com:Denisdev2002/tradutor.git
+
+Entre no diretório raiz
+
+    cd Treino_api/django_project
+Instale as dependências.
+
+    pip install requeriments.txt 
 
 
