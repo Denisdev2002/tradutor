@@ -1,23 +1,19 @@
-import os
-import requests
-# from display.views import TranslationAPIView
-# from display.viewset import 
+import json
+import sys
+from urllib import request, parse
 
-def get_translate(text, language, target_language):
+
+
+
+def get_translate(text, source, target):
     url = 'http://127.0.0.1:5000/translate'
-    data = {
-        "q": text,
-        "source": language,
-        "target": target_language
-    }
-    r = requests.post(url, json=data)
-    if r.status_code == 200:
-        # translated_text = r.json().get['translated_text']
-        translated_text = r.json().get('translated_text')
-        return translated_text
-    else:
-        return "Erro ao traduzir o texto"
+    params = {"q": text, "source": source, "target": target}
+    url_params = parse.urlencode(params)
 
-   
+    r = request.Request(url, data=url_params.encode())
+    response = request.urlopen(r)
+    response_str = response.read().decode()
+    return json.loads(response_str)["translatedText"]
+    
     
     

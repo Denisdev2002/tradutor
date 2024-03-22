@@ -19,8 +19,6 @@ from rest_framework import routers
 
 from display import viewset
 router = routers.DefaultRouter()
-router.register(r'users', viewset.UserViewSet)
-router.register(r'groups', viewset.GroupViewSet)
 router.register(r'traducao', viewset.TraducaoViewSet)
 
 urlpatterns = [
